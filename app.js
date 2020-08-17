@@ -1,14 +1,16 @@
 const express = require("express");
 const app = express();
 
-const config = require("config");
-const PORT = config.get("port") || 5000;
-
 const mongoose = require("mongoose");
 
-app.get("/", (req, res) => {
-  res.send("<h1>MERN Stack!</h1>");
-});
+const config = require("config");
+const PORT = config.get("port") || 3001;
+
+app.use(express.json({ extended: true }));
+
+app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/link", require("./routes/link.routes"));
+app.use("/to", require("./routes/redirect.routes"));
 
 async function start() {
   try {
@@ -18,7 +20,7 @@ async function start() {
       useCreateIndex: true
     });
     app.listen(PORT, () => {
-      console.log("Server started!");
+      console.log(`Server started on port ${PORT}!`);
     });
   } catch (e) {
     console.log("Server Error:", e.message);

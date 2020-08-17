@@ -1,4 +1,6 @@
 {
-  "port": 5000,
-  "mongoUri": "mongodb://localhost:27017/mern-app"
+  "port": 3001,
+  "jwtSecret": "cjbnwecv78wefhsdb23gdyjcu",
+  "mongoUri": "mongodb://localhost:27017/mern-app",
+  "baseUrl": "http://localhost:3001"
 }
